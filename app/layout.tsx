@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Module Demo',
-  description: 'Demo application for game module',
+  title: 'Platformer Game',
+  description: 'A simple platformer game built with Next.js',
 }
 
 export default function RootLayout({

@@ -1,36 +1,8 @@
-'use client'
-
-import { useRouter } from "next/navigation"
-import { useCallback } from "react"
-import { getUrlWithConfig } from 'wolfy-module-kit'
-import { ConfigForm } from '@/components/ConfigForm/ConfigForm'
-import configSchema, { type ModuleConfig, DEFAULT_CONFIG } from "@/system/configuration"
-import { FORM_FIELDS } from "@/components/ConfigForm/formFields"
-
-
-export default () => {
-  const router = useRouter()
-  const handleFormSubmit = useCallback((config: ModuleConfig, configString: string, signature: string = '') => {
-
-    // Use modular URL utilities
-    const url = getUrlWithConfig(configString, signature)
-
-    // Trigger re-processing by reloading
-    router.push('/game/?' + url.toString())
-  }, [])
-
+export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100">
-      <ConfigForm<ModuleConfig>
-        title="Configure Module"
-        description="No URL parameters found. Please configure your module settings below."
-        fields={FORM_FIELDS}
-        defaultValues={DEFAULT_CONFIG}
-        schema={configSchema}
-        onSubmit={handleFormSubmit}
-        submitButtonText="Create Module"
-        footerText="Powered by Zod + Module Kit 📦: This form uses Zod schema validation through the module-kit package for type-safe configuration validation."
-      />
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h1 className="text-4xl font-bold">Welcome to the Platformer!</h1>
+      <p className="text-lg">This is the bare bones of your new game.</p>
     </main>
-  );
+  )
 }
